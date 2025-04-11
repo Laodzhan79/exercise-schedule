@@ -1,14 +1,14 @@
 import datetime
 import json
 import requests
+
 # === Telegram настройки ===
 TOKEN = "7836254185:AAE-qjm_NYrsq6lNyIRH1laKdyWZEcnFZ8g"
 CHAT_ID = "1782079404"
 TELEGRAM_API = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
 # === Ссылка на JSON с расписанием ===
-SSCHEDULE_URL = "https://raw.githubusercontent.com/Laodzhan79/exercise-schedule/main/schedule.json"
-
+SCHEDULE_URL = "https://raw.githubusercontent.com/Laodzhan79/exercise-schedule/main/schedule.json"
 
 # === Загружаем расписание ===
 try:
@@ -19,11 +19,11 @@ except Exception as e:
     requests.post(TELEGRAM_API, data={"chat_id": CHAT_ID, "text": message})
     raise SystemExit()
 
-# === Определяем текущий день недели ===
+# === Определяем текущий день недели (например, 'Monday') ===
 today = datetime.datetime.today().strftime("%A")
 day_data = schedule.get(today)
 
-# === Отправляем сообщение в Telegram ===
+# === Формируем и отправляем сообщение в Telegram ===
 if day_data:
     message = f"🏋️ Упражнения на {today} ({day_data['time']}):\n\n{day_data['text']}"
 else:
