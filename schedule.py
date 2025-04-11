@@ -1,14 +1,13 @@
 import datetime
 import json
 import requests
-import os
 # === Telegram настройки ===
 TOKEN = "7836254185:AAE-qjm_NYrsq6lNyIRH1laKdyWZEcnFZ8g"
 CHAT_ID = "1782079404"
 TELEGRAM_API = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
 # === Ссылка на JSON с расписанием ===
-SCHEDULE_URL = "https://raw.githubusercontent.com/Laodzhan79/exercise-schedule/refs/heads/main/schedule.json?token=GHSAT0AAAAAADCCZEFSMVAKNRXRJGHPQIMIZ7ZPCZA"
+SCHEDULE_URL = "https://raw.githubusercontent.com/Laodzhan79/exercise-schedule/refs/heads/main/schedule.json?token=GHSAT0AAAAAADCCZEFTHBUJIVCMOG2JPNTUZ7ZQFJQ"
 
 # === Загружаем расписание ===
 try:
