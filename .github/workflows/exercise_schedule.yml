@@ -24,4 +24,4 @@ jobs:
 
       - name: Run exercise notification script
         run: |
-          python3 your_script.py  # Убедись, что скрипт называется правильно и лежит в правильной папке
+          python3 schedule.py  # Убедись, что скрипт называется правильно и лежит в правильной папке
