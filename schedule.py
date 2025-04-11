@@ -8,7 +8,7 @@ CHAT_ID = "1782079404"
 TELEGRAM_API = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
 # === Ссылка на JSON с расписанием ===
-SCHEDULE_URL = "https://raw.githubusercontent.com/Laodzhan79/exercise-schedule/main/schedule.json"
+SCHEDULE_URL = "https://raw.githubusercontent.com/Laodzhan79/exercise-schedule/schedule.json"
 
 # === Загружаем расписание ===
 try:
