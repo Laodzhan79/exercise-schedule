@@ -1,0 +1,27 @@
+name: Exercise Schedule Notification
+
+on:
+  schedule:
+    - cron: '55 8 * * *'  # Каждый день в 08:55 по UTC
+  workflow_dispatch:  # Позволяет запускать вручную через интерфейс GitHub
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run exercise notification script
+        run: |
+          python3 your_script.py  # Убедись, что скрипт называется правильно и лежит в правильной папке
