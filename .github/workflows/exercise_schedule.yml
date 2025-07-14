@@ -2,8 +2,8 @@ name: Exercise Schedule Notification
 
 on:
   schedule:
-    - cron: '55 8 * * *'  # Каждый день в 08:55 по UTC
-  workflow_dispatch:  # Позволяет запускать вручную через интерфейс GitHub
+    - cron: '55 8 * * *'  # Каждый день в 08:55 UTC (11:55 МСК, если ты в Москве)
+  workflow_dispatch:  # Ручной запуск из интерфейса GitHub
 
 jobs:
   notify:
@@ -11,17 +11,20 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4  # Обновил до актуальной версии
 
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'  # Можно указать 3.9, если нужно
 
       - name: Install dependencies
         run: |
           pip install requests
 
-      - name: Run exercise notification script
+      - name: Run notification script
         run: |
-          python3 schedule.py  # Убедись, что скрипт называется правильно и лежит в правильной папке
+          python3 ./schedule.py  # Путь к скрипту (если он в корне)
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}  # Безопасное хранение токена
+          CHAT_ID: ${{ secrets.CHAT_ID }}  # И chat_id тоже в секретах
